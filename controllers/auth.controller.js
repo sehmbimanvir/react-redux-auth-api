@@ -43,6 +43,21 @@ export const forgotPassword = async (req, res) => {
   }
 }
 
+export const resetPassword = async (req, res) => {
+  const { reset_token } = req.params
+  const password = bcrypt.hashSync(req.body.password, bcrypt.genSaltSync(10))
+  const user = await UserModal.findOne({ reset_token }, { _id: 1 })
+  if (!user)
+    return res.jsonResponse('User Not Found', {}, 404)
+
+  try {
+    await UserModal.findByIdAndUpdate(user, { password })
+    res.jsonResponse('Password has been changed')
+  } catch (err) {
+    res.jsonError(err)
+  }
+}
+
 export const logout = (req, res) => {
   res.jsonResponse('Logged out Successfully')
 }
