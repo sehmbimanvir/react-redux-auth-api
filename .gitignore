@@ -1,0 +1,10 @@
+/node_modules
+/xml-files/*
+!xml-files/.gitkeep 
+/.idea
+/.vscode
+.env
+.env.production
+package-lock.json
+server.cert
+server.key
