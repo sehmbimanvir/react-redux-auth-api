@@ -5,8 +5,8 @@ import { sendPasswordResetEmail } from '../emails'
 
 export const register = async (req, res) => {
   const password = bcrypt.hashSync(req.body.password, bcrypt.genSaltSync(10))
-  const { email } = req.body
-  const User = new UserModal({ email, password })
+  const { email, name } = req.body
+  const User = new UserModal({ name, email, password })
 
   try {
     const user = await User.save()
