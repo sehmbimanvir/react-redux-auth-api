@@ -27,6 +27,13 @@ const UserSchema = new Schema({
   },
   reset_token: {
     type: 'String'
+  },
+  confirm_token: {
+    type: 'String',
+    required: true
+  },
+  status: {
+    type: 'Boolean'
   }
 }, {
   timestamps: {
