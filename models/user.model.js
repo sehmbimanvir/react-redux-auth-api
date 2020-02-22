@@ -5,10 +5,14 @@ var validateEmail = function (email) {
   return re.test(email)
 };
 
-
 const Schema = mongoose.Schema;
 
 const UserSchema = new Schema({
+  name: {
+    type: 'String',
+    required: true,
+    trim: true
+  },
   email: {
     type: 'String',
     required: true,
@@ -23,6 +27,13 @@ const UserSchema = new Schema({
   },
   reset_token: {
     type: 'String'
+  },
+  confirm_token: {
+    type: 'String',
+    required: true
+  },
+  status: {
+    type: 'Boolean'
   }
 }, {
   timestamps: {
